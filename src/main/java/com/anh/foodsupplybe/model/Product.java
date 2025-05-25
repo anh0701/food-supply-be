@@ -1,5 +1,7 @@
 package com.anh.foodsupplybe.model;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -12,6 +14,9 @@ public class Product {
     private String name;
     @Column
     private double price;
+
+    @OneToMany(mappedBy = "product")
+    private List<Review> reviews;
 
     public Product(Long id, String name, double price) {
         this.id = id;

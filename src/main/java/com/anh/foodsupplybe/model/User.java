@@ -3,6 +3,7 @@ package com.anh.foodsupplybe.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,6 +37,9 @@ public class User {
             @JoinColumn(name = "user_id") }, inverseJoinColumns = {
             @JoinColumn(name = "role_id") })
     private Set<Role> roles;
+
+    @OneToMany(mappedBy = "user")
+    private List<Review> reviews;
 
     public MemberLevel getMemberLevel() {
         return memberLevel;
